@@ -34,7 +34,6 @@ def klient_poczty():
     global klient_poczty
     klient_poczty = startEntry3.get()
 def logowanie():
-    skrzynka = comboExample.get()
     labelTop = tkinter.Label(root,text = "Wybierz skrzynke")
     labelTop.pack()
     comboExample.pack()
@@ -46,10 +45,16 @@ def logowanie():
     lista_folderow = [i[2] for i in lista_tupli_folderow if i[2] != "[Gmail]"]
     plotButton.destroy()
     global plotButton2
-    plotButton2 = tkinter.Button(root, text = "pobierz dane")
+    plotButton2 = tkinter.Button(root, text = "pobierz dane", command=lacz_funkcje(skrzynka_dane))
     plotButton2.pack()
 def nowa_lista():
     comboExample["values"] = lista_folderow
+def skrzynka_dane():
+    global skrzynka_dane
+    skrzynka_dane = comboExample.get()
+    labelTop = tkinter.Label(root,text = "Wybierz skrzynke")
+    labelTop.pack()
+    comboExample.pack()
     
 #tutaj mam zdefiniowane okienka z wartosciami
 okno_email = tkinter.Label(root,text="Wpisz email: ").pack()
